@@ -37,7 +37,7 @@ resolver: lts-6.2
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - '.'
-- '../json-pointer'
+- '../json-pointy'
 - location:
     git: "https://github.com/lwm/tasty-discover.git"
     commit: "HEAD"
