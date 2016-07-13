@@ -21,6 +21,7 @@ module Data.Aeson.JsonApi where
 import           Data.Aeson          hiding (Error)
 import           Data.Aeson.Pointer
 import           Data.Text (Text)
+import           Data.Vector (Vector)
 import qualified Data.HashMap.Strict as H
 
 {-
@@ -29,12 +30,31 @@ data Document meta a = Document
   , documentLinks   :: Maybe Links
   , documentJsonApi :: Maybe JsonApi
   }
+-}
+
+type Included = Value
 
 data MandatoryDocumentData meta a
   = DataDocument a (Maybe meta) (Maybe Included)
   | MetaDocument meta
   | ErrorsDocument (Vector Error) (Maybe meta)
+  deriving (Show)
 
+instance (FromJSON meta, FromJSON a) => FromJSON (MandatoryDocumentData meta a) where
+  parseJSON (Object o) = do
+    mData <- o .:? "data"
+    mErrors <- o .:? "errors"
+    mMeta <- o .:? "meta"
+    case mData of
+      Nothing -> case mErrors of
+        Nothing -> case mMeta of
+          Nothing -> fail "Document MUST contain at least one one of 'data', 'errors', or 'meta' fields"
+          Just meta -> return $ MetaDocument meta
+        Just errs -> return $ ErrorsDocument errs mMeta
+      Just d -> return $ DataDocument d mMeta Nothing
+  parseJSON _ = fail "Document must be an object"
+
+{-
 -- data
 
 data JsonApi = JsonApi
