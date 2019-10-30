@@ -16,6 +16,8 @@ jobs:
     - name: Install dependencies
       working-directory: ./json-pointy
       run: |
+        pwd
+        ls -la
         cabal update
         cabal install --only-dependencies --enable-tests
     - name: Build
@@ -26,4 +28,3 @@ jobs:
     - name: Run tests
       working-directory: ./json-pointy
       run: cabal test
-
