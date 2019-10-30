@@ -18,13 +18,13 @@ jobs:
       run: |
         pwd
         ls -la
-        cabal update
-        cabal install --only-dependencies --enable-tests
+        cabal v2-update
+        cabal v2-install --only-dependencies --enable-tests
     - name: Build
       working-directory: ./json-pointy
       run: |
-        cabal configure --enable-tests
-        cabal build
+        cabal v2-configure --enable-tests
+        cabal v2-build
     - name: Run tests
       working-directory: ./json-pointy
       run: cabal test
