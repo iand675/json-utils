@@ -1,5 +1,5 @@
 name:                json-pointy
-version:             0.0.0.1
+version:             0.1.0.1
 license:             BSD3
 license-file:        LICENSE
 stability:           experimental
@@ -9,10 +9,11 @@ homepage:            https://github.com/iand675/json-utils/
 bug-reports:         https://github.com/iand675/json-utils/issues
 category:            Development
 copyright:           Copyright (C) 2019 Ian Duncan
-tested-with:         GHC == 7.10.3
+tested-with:         GHC == 8.6.4
 synopsis:            JSON Pointer (RFC 6901) parsing, access, and modification
 description:         See README.md
 cabal-version:       >= 1.8
+build-type: Simple
 
 extra-source-files:
   CHANGELOG.md
