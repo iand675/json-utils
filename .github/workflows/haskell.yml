@@ -10,6 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-haskell@v1
+      working-directory: ./json-pointy
       with:
         ghc-version: '8.6.5'
         cabal-version: '3.0'
@@ -17,9 +18,13 @@ jobs:
       run: |
         cabal update
         cabal install --only-dependencies --enable-tests
+      working-directory: ./json-pointy
     - name: Build
       run: |
         cabal configure --enable-tests
         cabal build
+      working-directory: ./json-pointy
     - name: Run tests
       run: cabal test
+      working-directory: ./json-pointy
+
