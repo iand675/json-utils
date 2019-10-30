@@ -1,3 +1,3 @@
-# Change Log
+# 0.1.0.0
 
-This document records all notable changes to json-pointer. This project adheres to [Semantic Versioning](http://semver.org/).
+Initial release.

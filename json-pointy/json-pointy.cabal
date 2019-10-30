@@ -5,25 +5,18 @@ license-file:        LICENSE
 stability:           experimental
 author:              Ian Duncan
 maintainer:          Ian Duncan <ian@iankduncan.com>
-homepage:            https://github.com/iand675/json-pointer
-bug-reports:         https://github.com/iand675/json-pointer/issues
+homepage:            https://github.com/iand675/json-utils/
+bug-reports:         https://github.com/iand675/json-utils/issues
 category:            Development
-copyright:           Copyrigh (C) 2016 Ian Duncan
+copyright:           Copyright (C) 2019 Ian Duncan
 tested-with:         GHC == 7.10.3
-synopsis:            Cool synopsis here
-description:         Cool description here
+synopsis:            JSON Pointer (RFC 6901) parsing, access, and modification
+description:         See README.md
 cabal-version:       >= 1.8
 
 extra-source-files:
-  .gitignore
-  examples/LICENSE
-  examples/json-pointer-examples.cabal
-  examples/*.hs
-  images/*.png
-  HLint.hs
   CHANGELOG.md
   README.md
-  SUPPORT.md
 
 source-repository head
   type: git
@@ -36,10 +29,13 @@ library
     bytestring            >= 0.9.1.10 && < 0.11,
     unordered-containers  >= 0.2.4    && < 0.3,
     vector                >= 0.5      && < 1,
-    mtl                   >= 2.0.1    && < 2.3,
     aeson,
     attoparsec,
-    lens
+    microlens,
+    template-haskell >= 2.14,
+    th-lift-instances,
+    uri-bytestring,
+    http-types
   exposed-modules:
     Data.Aeson.Pointer
   ghc-options: -Wall -fwarn-tabs -O2 -fdicts-cheap -funbox-strict-fields -fmax-simplifier-iterations=10
@@ -79,16 +75,5 @@ test-suite doctests
     mtl,
     doctest,
     filepath,
-    directory
-
-benchmark bench
-  type:           exitcode-stdio-1.0
-  main-is:        bench.hs
-  ghc-options:    -Wall -O2 -threaded -fdicts-cheap -funbox-strict-fields
-  hs-source-dirs: benchmarks
-  build-depends:
-    base,
-    criterion,
-    deepseq,
-    mtl,
-    json-pointer
+    directory,
+    json-pointy
