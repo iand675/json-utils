@@ -42,23 +42,23 @@ library
   ghc-options: -Wall -fwarn-tabs -O2 -fdicts-cheap -funbox-strict-fields -fmax-simplifier-iterations=10
   hs-source-dirs: src
 
-test-suite tests
-  type:           exitcode-stdio-1.0
-  main-is:        tests.hs
-  ghc-options:    -Wall -threaded
-  hs-source-dirs: tests
-  build-depends:
-    base,
-    text,
-    bytestring,
-    containers,
-    hashable,
-    unordered-containers,
-    vector,
-    mtl,
-    tasty,
-    tasty-hunit,
-    tasty-discover
+-- test-suite tests
+--   type:           exitcode-stdio-1.0
+--   main-is:        tests.hs
+--   ghc-options:    -Wall -threaded
+--   hs-source-dirs: tests
+--   build-depends:
+--     base,
+--     text,
+--     bytestring,
+--     containers,
+--     hashable,
+--     unordered-containers,
+--     vector,
+--     mtl,
+--     tasty,
+--     tasty-hunit,
+--     tasty-discover
 
 test-suite doctests
   type:           exitcode-stdio-1.0
