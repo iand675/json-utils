@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-      if: github.event.action == 'opened' || github.event.action == 'synchronize'
+      # if: github.event.action == 'opened' || github.event.action == 'synchronize'
 
     - uses: actions/setup-haskell@v1
       name: Setup Haskell
