@@ -60,15 +60,15 @@ import           URI.ByteString
 -- >>> :set -XQuasiQuotes
 -- >>> :{
 -- let sampleDoc = object
---       [ "foo" .= ["bar" :: T.Text, "baz"]
---       , "" .= (0 :: Int)
+--       [ "" .= (0 :: Int)
+--       , " " .= (7 :: Int)
 --       , "a/b" .= (1 :: Int)
 --       , "c%d" .= (2 :: Int)
 --       , "e^f" .= (3 :: Int)
+--       , "foo" .= ["bar" :: T.Text, "baz"]
 --       , "g|h" .= (4 :: Int)
 --       , "i\\j" .= (5 :: Int)
 --       , "k\"l" .= (6 :: Int)
---       , " " .= (7 :: Int)
 --       , "m~n" .= (8 :: Int)
 --       ]
 -- :}
@@ -87,7 +87,7 @@ import           URI.ByteString
 --
 --
 -- >>> sampleDoc ^? pointerTraversal [jsonPtr||]
--- Just (Object (fromList [("c%d",Number 2.0),("m~n",Number 8.0),("e^f",Number 3.0),("",Number 0.0),(" ",Number 7.0),("foo",Array [String "bar",String "baz"]),("a/b",Number 1.0),("i\\j",Number 5.0),("k\"l",Number 6.0),("g|h",Number 4.0)]))
+-- Just (Object (fromList [("",Number 0.0),(" ",Number 7.0),("a/b",Number 1.0),("c%d",Number 2.0),("e^f",Number 3.0),("foo",Array [String "bar",String "baz"]),("g|h",Number 4.0),("i\\j",Number 5.0),("k\"l",Number 6.0),("m~n",Number 8.0)]))
 -- >>> sampleDoc ^? pointerTraversal [jsonPtr|/foo|]
 -- Just (Array [String "bar",String "baz"])
 -- >>> sampleDoc ^? pointerTraversal [jsonPtr|/foo/0|]
